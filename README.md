@@ -1,19 +1,5 @@
 # Front-end
 
-## ☝️ Proposal
-
----
-
-- What problem does your app solve?
-They want to build a platform that provides tech entrepreneurs with limited resources access to business training, project capital raising and mentoring.
-
-- Be as specific as possible; how does your app solve the problem?
-Sharing and exposing projects to help fund users.
-
-- What is the mission statement?
-
-    To help underrepresented groups who wouldn’t otherwise have access to technology.
-
 ## 💡 Features
 
 ---
@@ -47,60 +33,271 @@ Sharing and exposing projects to help fund users.
 - Are you required to pay to use said API(s)?
     - No
 
-## 🎯 Target Audience
+---
+
+# API Endpoints - References
+
+This data is broken down into three categories: `Project`, `Funder` and `User` data. 
+
+* `User`: used for registration and login.
+* `Funder`: used to add and remove a user from/to `funders` array.
+* `Project`: used to get data for browsing page and individual fundraiser page. 
 
 ---
 
-- Who is your target audience? Be specific.
-Under-represented entrepreneurs, minorities
-- What feedback have you gotten from potential users?
-none really
-- Have you validated this problem and your solution with a target audience? Describe how.
-    - no issues yet
+## Project data
+
+ **[GET]** `/api/projects`
+ 
+- **RETURNS** Array of objects with Shape: 
+
+```js
+[
+    {
+        id: 0, //int
+        title: "Title", //str
+        description: "project description", //str
+        host: {
+            id: 0, //int
+            username: "username", //str
+            firstname: "John", //str
+            lastname: "Doe", //str
+        }, 
+        funders: [
+            {
+                id: 0, //int
+                username: "username", //str 
+                firstname: "James", //str
+                lastname: "Smith" //str
+            },
+            ...
+        ] 
+    }
+]
+
+```
+
+**[GET]** `/api/projects/:id`
+
+- **RETURNS** Object with shape: 
+
+```js
+{
+    id: 0, //int
+    title: "Title", //str
+    description: "project description", //str 
+    host: {
+        id: 0, //int,
+        username: "username", //str
+        firstname: "John", //str
+        lastname: "Doe", //str
+    }, 
+    funders: [
+        {
+            id: 0, //int
+            username: "username", //str 
+            firstname: "James", //str
+            lastname: "Smith" //str
+        },
+        ...
+    ] 
+}
+```
+
+ **[GET]** `/api/projects/user/:id`
+
+- **RETURNS** Array of objects for specific userId:
+
+```js
+[
+    {
+        id: 0, //int
+        title: "Title", //str 
+        description: "project description", //str
+        host: {
+            id: 0, //int,
+            username: "username", //str
+            firstname: "John", //str
+            lastname: "Doe", //str
+        }, 
+        funders: [
+            {
+                id: 0, //int
+                username: "username", //str 
+                firstname: "James", //str 
+                lastname: "Smith" //str
+            },
+            ...
+        ] 
+    }   
+]
+```
+
+**[POST]** `/api/projects`
+
+- **REQUIRES** Object with Shape: 
+
+```js
+{
+    title: "Title", //str
+    description: "project description", //str
+    host: 0 //userId 
+}
+```
+
+- **RETURNS** Object with shape: 
+
+```js
+{
+    id: 0, //int
+    title: "Title", //str
+    description: "project description", //str
+    host: {
+        id: 0, //int
+        username: "username", //str
+        firstname: "John", //str
+        lastname: "Doe", //str
+    }, 
+    funders: [] 
+}
+```
+
+**[PUT]** `/api/projects/:id`
+
+- **REQURIES** Object with Shape: 
+```js
+{
+    title: "Title", //str
+    description: "project description" //str
+}
+```
+- **RETURNS** Updated object: 
+
+```js
+{
+    id: 0, //int
+    title: "Title", //str
+    description: "project description", //str
+    host: {
+        id: 0, //int
+        username: "username", //str
+        firstname: "John", //str
+        lastname: "Doe", //str
+    }, 
+    funders: [
+        {
+            id: 0, //int
+            username: "username", //str 
+            firstname: "James", //str 
+            lastname: "Smith" //str
+        },
+        ...
+    ] 
+}
+```
+
+**[DELETE]** `/api/projects/:id`
+
+- Does not return anything.
+---
+## Funder data 
+
+**[PUT]** `/api/projects/:id/fund/:userid`
+
+- **REQUIRES** Object: 
+
+```js
+{
+    username: "username" //str
+}
+```
+
+**RETURNS**
+
+- Does not return anything. Maybe it could return updated project oboject.
+
+**[DELETE]** `/api/projects/:id/fund/:userid`
+
+- **RETURNS** with updated `funders` array: 
+
+```js
+{
+    id: 0, //int
+    title: "Title", //str
+    description: "project description", //str 
+    host: {
+        id: 0, //int,
+        username: "username", //str
+        firstname: "John", //str
+        lastname: "Doe", //str
+    }, 
+    funders: [
+        {
+            id: 0, //int,
+            username: "username", //str 
+            firstname: "James", //str 
+            lastname: "Smith" //str
+        },
+        ...
+    ] 
+}
+```
 
 ---
 
-## 🔑 Prototype Key Feature(s)
+## Users
 
----
+**[POST]** `/api/users/register`
+    
+- **REQUIRES** Object shape: 
 
-- How long do you think it will take to implement these features? 
-1 week ideally
-- Do you anticipate working on stretch functionality after completion of a Minimal Viable Product?
+```js
+{ 
+    username: "username", //str
+    password: "password", //str 
+    firstname: "John", //str
+    lastname: "Doe" //str 
+}
+```
+- **RETURNS** Object shape: 
+    
+```js
+{ 
+    id: 0, //int
+    username: "username", //str 
+    password: "ntbbksxhtasnethnstajea" //hashed str
+}
+```
 
-    Yes ideally
+**[POST]** `/api/users/login`
 
-### API Endpoints - References
+- **REQUIRES** Object shape: 
 
-- **[GET] /api/projects**
-    - **returns** Array of Objects  with Shape: [{**id**:int,  **title**: 'string', **host**: {object of a user w/id,username, firstname, lastname}, **description**: 'string', **funders:** ArrayofUserObjects[] }]
-- **[GET] /api/projects/:id**
-    - **returns** 1 Object with Shape: {**id**:int,  **title**: 'string', **host**: {object of a user w/id,username, firstname, lastname}, **description**: 'string', **funders:** ArrayofUserObjects[] }
-- **[GET] /api/projects/user/:id**
-    - **returns** Array of Objects for specific userId: {**id**:int,  **title**: 'string', **host**: {object of a user w/id,username, firstname, lastname}, **description**: 'string', **funders:** ArrayofUserObjects[] }
-- **[POST] /api/projects**
-    - **requires** Object with Shape: {**title**:'string', **host**:userId, **description**:'string'}
-    - **returns** Object {**id**:int,  **title**: 'string', **host**: {object of a user w/id,username, firstname, lastname}, **description**: 'string', **funders:** ArrayofUserObjects[] }
-- **[PUT] /api/projects/:id**
-    - **requires** Object with Shape: {**title**: 'string', **description**: 'string'}
-    - **returns** updated Object {**id**:int,  **title**: 'string', **host**: {object of a user w/id,username, firstname, lastname}, **description**: 'string', **funders:** ArrayofUserObjects[] }
-- **[DELETE] /api/projects/:id**
-    - does not return anything
+```js
+{ 
+    username: "username", //str 
+    password: "password" //str 
+}
+```
 
-Funder
+- **RETURNS** Object shape: 
 
-- **[PUT] /api/projects/:id/fund/:userid**
-    - object {**username**: 'string'}
-- **[DELETE] /api/projects/:id/fund/:userid**
-    - returns with updated array of users {**id**:int,  **title**: 'string', **host**: {object of a user w/id,username, firstname, lastname}, **description**: 'string', **funders:** ArrayofUserObjects[] }
+```js
+{ 
+    message: "Logged in", //str 
+    token: "'rcnjntahontjmsantohscrnthasntjbnkthslcjvw"//str 
+}
+```
 
-Users
+**[GET]** `/api/users/:username`
 
-- **[POST] /api/users/register**
-    - Object Shape: { username: "string", password: "string", firstname:"string", lastname:"string" }
-    - Returns Object: { id: integer, username, password: "hashed string"}
-- **[POST] /api/users/login**
-    - requires Object Shape: { username: "string", password: "string" }
-    - returns Object Shape: { message: "string", token: "string" }
-- **[GET] /api/users/:username**
-    - returns Object Shape: { id:int, username: 'string', firstname:'string', lastname:'string'}
+- **RETURNS** Object shape: 
+
+```js
+{ 
+    id: 0, //int, 
+    username: "username", //str 
+    firstname: "John", //str
+    lastname: "Doe"//str
+}
+```
