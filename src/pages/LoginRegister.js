@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchToken } from '../actions/userActions';
 
 class LoginRegister extends React.Component {
 
@@ -19,23 +21,31 @@ class LoginRegister extends React.Component {
         this.setState({
             ...this.state,
             loginCreds: {
-                [e.target.name]: e.target.value
-            }
-        })
-    }
-    handleRegisterChange = e => {
-        this.setState({
-            ...this.state,
-            registerCreds: {
+                ...this.state.loginCreds,
                 [e.target.name]: e.target.value
             }
         })
     }
 
+    handleRegisterChange = e => {
+        this.setState({
+            ...this.state,
+            registerCreds: {
+                ...this.state.registerCreds,
+                [e.target.name]: e.target.value
+            }
+        })
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.fetchToken(this.state.loginCreds);
+    }
+
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label>username: </label>
                     <input 
                         value={this.state.loginCreds.username}
@@ -52,7 +62,7 @@ class LoginRegister extends React.Component {
                     />
                     <button>login</button>
                 </form>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label>username: </label>
                     <input 
                         value={this.state.registerCreds.username}
@@ -88,4 +98,9 @@ class LoginRegister extends React.Component {
     }
 }
 
-export default LoginRegister
+const mapStateToProps = state => {
+    console.log(state.login);
+    return state.login;
+}
+
+export default connect(mapStateToProps, { fetchToken })(LoginRegister)
