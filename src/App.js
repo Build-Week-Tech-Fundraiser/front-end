@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { connect } from 'react-redux';
@@ -18,6 +17,7 @@ function App() {
           <Route path='/browse' component={Browse}/>
           <Route path='/login' component={LoginRegister}/>
           <Route path='/project' component={Project}/>
+          {/* maybe have a '/profile' or '/home' to show "my project" and "my fundings" */}
         </Switch>
       </div>
     </Router>
