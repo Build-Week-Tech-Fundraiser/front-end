@@ -6,10 +6,10 @@ import reportWebVitals from './reportWebVitals';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import logger from 'logger';
+// import logger from 'logger';
 import { Provider }  from 'react-redux';
 
-import { rootReducer } from './Reducers/index';
+import { rootReducer } from './reducers/index';
 
 const store = createStore(rootReducer, applyMiddleware(thunk /* , logger */));
 
