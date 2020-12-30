@@ -1,19 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class Navigation extends React.Component {
+
+    handleClick = e => {
+        e.preventDefault();
+        if (e.target.textContent === 'logout') {
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+        }
+        window.location.href = e.target.name;
+    }
 
     render() {
         return (
             <div>
-                <ul>
-                    <li>
-                        <Link to='/browse'>browse</Link>
-                    </li>
-                    <li>
-                        <Link to='/login'>logout</Link>
-                    </li>
-                </ul>
+                <nav>
+                    <ul>
+                        <li>
+                            <button onClick={this.handleClick} name='/'>browse</button>
+                        </li>
+                        <li>
+                            <button onClick={this.handleClick} name='/login'>{localStorage.getItem('token') ? 'logout' : 'login'}</button>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         )
     }

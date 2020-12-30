@@ -18,7 +18,6 @@ class Authentication extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.user);
     return state.user;
 }
 

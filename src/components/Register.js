@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchToken } from '../actions/userActions';
+import { fetchToken, setCredentials } from '../actions/userActions';
 
 class Register extends React.Component {
 
@@ -25,8 +25,16 @@ class Register extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log(this.state.credentials)
-        this.props.fetchToken(this.state.credentials)
+        this.props.fetchToken(this.state.credentials);
+        this.setState({
+            ...this.state,
+            credentials: {
+                username: '',
+                password: '',
+                firstname: '',
+                lastname: ''
+            }
+        })
     }
 
     render() {
@@ -68,4 +76,4 @@ class Register extends React.Component {
     }
 }
 
-export default connect(null, { fetchToken })(Register)
+export default connect(null, { fetchToken, setCredentials })(Register)

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchToken } from '../actions/userActions';
+import { fetchToken, setCredentials } from '../actions/userActions';
 
 class Login extends React.Component {
 
@@ -23,7 +23,16 @@ class Login extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.fetchToken(this.state.credentials)
+        this.props.fetchToken(this.state.credentials);
+        this.setState({
+            ...this.state,
+            credentials: {
+                username: '',
+                password: '',
+                firstname: '',
+                lastname: ''
+            }
+        })
     }
 
     render() {
@@ -51,4 +60,4 @@ class Login extends React.Component {
     }
 }
 
-export default connect(null, { fetchToken })(Login)
+export default connect(null, { fetchToken, setCredentials })(Login)
