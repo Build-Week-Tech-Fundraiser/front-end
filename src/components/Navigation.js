@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { NavContainer } from './styles/NavigationStyles';
+import { Button } from './styles/ButtonStyles';
+
 class Navigation extends React.Component {
 
     handleClick = e => {
@@ -13,18 +16,21 @@ class Navigation extends React.Component {
 
     render() {
         return (
-            <div>
+            <NavContainer>
                 <nav>
                     <ul>
                         <li>
-                            <button onClick={this.handleClick} name='/'>browse</button>
+                            <Button onClick={this.handleClick} name='/'>browse</Button>
                         </li>
                         <li>
-                            <button onClick={this.handleClick} name='/login'>{localStorage.getItem('token') ? 'logout' : 'login'}</button>
+                            <Button onClick={this.handleClick} name='/home'>home</Button>
+                        </li>
+                        <li>
+                            <Button onClick={this.handleClick} name='/login'>{localStorage.getItem('token') ? 'logout' : 'login'}</Button>
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </NavContainer>
         )
     }
 }

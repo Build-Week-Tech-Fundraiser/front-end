@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { fetchToken, setCredentials } from '../actions/userActions';
+import { FormContainer } from './styles/AuthenticationStyles';
+import { Button } from './styles/ButtonStyles';
 
 class Login extends React.Component {
 
@@ -37,25 +40,30 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
+            <FormContainer>
                 <form onSubmit={this.handleSubmit}>
-                    <label>username: </label>
-                    <input 
-                        value={this.state.credentials.username}
-                        onChange={this.handleChange}
-                        type='text' 
-                        name='username' 
-                    />
-                    <label>password: </label>
-                    <input 
-                        value={this.state.credentials.password}
-                        onChange={this.handleChange}
-                        type='password' 
-                        name='password'
-                    />
-                    <button>login</button>
+                    <div className='input-container'>
+                        <label>username: </label>
+                        <input 
+                            value={this.state.credentials.username}
+                            onChange={this.handleChange}
+                            type='text' 
+                            name='username' 
+                        />
+
+                    </div>
+                    <div className='input-container'>
+                        <label>password: </label>
+                        <input 
+                            value={this.state.credentials.password}
+                            onChange={this.handleChange}
+                            type='password' 
+                            name='password'
+                        />
+                    </div>
+                    <Button>login</Button>
                 </form>
-            </div>
+            </FormContainer>
         )
     }
 }
