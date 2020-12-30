@@ -12,12 +12,6 @@ import Home from './pages/Home';
 
 class App extends React.Component {
 
-  componentDidMount() {  
-    if (localStorage.getItem('token')) {
-      console.log('token in localStorage')
-    }
-  }
-
   render() {
     return (
       <Router>
@@ -41,4 +35,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, { /* action creators */})(App);
+export default connect(mapStateToProps, { })(App);
