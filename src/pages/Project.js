@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
+import { fetchProject } from '../actions/projectActions';
 
 class Project extends React.Component {
 
@@ -12,6 +13,7 @@ class Project extends React.Component {
 
     componentDidMount() {
         // make api call to /projects/:id
+        this.props.fetchProject(this.id);
     }
 
     render() {
@@ -28,4 +30,4 @@ const mapStateToProps = state => {
     return state;
 }
 
-export default connect(mapStateToProps)(withRouter(Project))
+export default connect(mapStateToProps, { fetchProject })(withRouter(Project))
