@@ -1,10 +1,8 @@
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/index';
 
 const initialState = {
-    credentials: null,
     isLoading: false,
     message: localStorage.getItem('token') ? 'Logged in' : 'Not logged in',
-    token: null
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -20,7 +18,6 @@ export const userReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 message: action.payload.message,
-                token: action.payload.token
             })
         case(LOGIN_FAIL):
             return ({
