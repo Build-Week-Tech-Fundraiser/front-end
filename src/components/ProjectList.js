@@ -16,9 +16,7 @@ class ProjectList extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {
-        projectList: state.browse.projectList
-    }
+    return state.browse
 }
 
 export default connect(mapStateToProps)(ProjectList)
