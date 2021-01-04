@@ -1,15 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { fetchAllProjects } from '../actions/browseActions';
+import ProjectList from '../components/ProjectList';
 
 class Browse extends React.Component {
+
+    componentDidMount() {
+        this.props.fetchAllProjects()
+    }
 
     render() {
         return (
             <div>
-                Page to browse through <Link to='/project'>projects</Link>
+                <h2>browse recent projects</h2>
+                <ProjectList/>
             </div>
         )
     }
 }
 
-export default Browse
+export default connect(null, { fetchAllProjects })(Browse)

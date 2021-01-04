@@ -12,7 +12,6 @@ export const fetchToken = credentials => dispatch => {
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('username', credentials.username);
             dispatch({type: LOGIN_SUCCESS, payload: res.data});
-            window.location.href = '/';
         })
         .catch(err => {
             dispatch({type: LOGIN_FAIL, payload: err.response.data})

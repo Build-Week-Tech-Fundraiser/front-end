@@ -20,7 +20,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/' component={Browse}/>
             <Route path='/login' component={Authentication}/>
-            <Route path='/project' component={Project}/>
+            <Route path='/project/:id' component={Project}/>
             <PrivateRoute path='/home' component={Home} />
           </Switch>
         </div>
@@ -30,6 +30,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => { 
+  console.log(state);
   return {
     userCredentials: state.user.credentials
   };
