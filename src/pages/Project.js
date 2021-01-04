@@ -12,14 +12,16 @@ class Project extends React.Component {
     }
 
     componentDidMount() {
-        // make api call to /projects/:id
         this.props.fetchProject(this.id);
     }
 
     render() {
         return (
             <div>
-                Display individual project when clicked on from browse page
+                {this.props.message && <p>{this.props.message}</p>}
+                <h2>{this.props.title}</h2>
+                <p>{this.props.description}</p>
+                
             </div>
         )
     }

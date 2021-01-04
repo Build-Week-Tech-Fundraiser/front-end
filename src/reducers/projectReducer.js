@@ -20,6 +20,7 @@ export const projectReducer = (state = initialState, action) => {
             return ({
                 ...state,
                 isLoading: false,
+                message: '',
                 title: action.payload.title,
                 description: action.payload.description,
                 host: action.payload.host,
