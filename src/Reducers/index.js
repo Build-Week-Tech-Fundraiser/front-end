@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 import { userReducer } from './userReducer';
-import { projectReducer } from './projectReducer';
+import { browseReducer } from './browseReducer';
 import { appReducer } from './appReducer';
 
 export const rootReducer = combineReducers({
     user: userReducer,
-    project: projectReducer,
+    browse: browseReducer,
     app: appReducer
 })
 
