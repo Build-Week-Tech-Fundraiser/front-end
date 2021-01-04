@@ -6,3 +6,7 @@
     These constants will primarily be used for action creators
     and their respected reducers. 
 */
+
+export const LOGIN_START = "LOGIN_START";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";

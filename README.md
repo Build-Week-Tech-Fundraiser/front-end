@@ -261,6 +261,8 @@ This data is broken down into three categories: `Project`, `Funder` and `User` d
 ```
 - **RETURNS** Object shape: 
     
+    <!-- This should be just like the return of the login -->
+
 ```js
 { 
     id: 0, //int
