@@ -1,4 +1,4 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, SET_CREDENTIALS } from '../actions/index';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL } from '../actions/index';
 
 const initialState = {
     credentials: null,
@@ -27,11 +27,6 @@ export const userReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 message: action.payload,
-            })
-        case(SET_CREDENTIALS):
-            return ({
-                ...state,
-                credentials: action.payload
             })
         default:
             return state;

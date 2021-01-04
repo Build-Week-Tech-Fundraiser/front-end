@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchToken, setCredentials } from '../actions/userActions';
+import { fetchToken } from '../actions/userActions';
 import { FormContainer } from './styles/AuthenticationStyles';
 import { Button } from './styles/ButtonStyles';
 
@@ -88,4 +88,4 @@ class Register extends React.Component {
     }
 }
 
-export default connect(null, { fetchToken, setCredentials })(Register)
+export default connect(null, { fetchToken })(Register)

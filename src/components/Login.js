@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetchToken, setCredentials } from '../actions/userActions';
+import { fetchToken } from '../actions/userActions';
 import { FormContainer } from './styles/AuthenticationStyles';
 import { Button } from './styles/ButtonStyles';
 
@@ -68,4 +68,4 @@ class Login extends React.Component {
     }
 }
 
-export default connect(null, { fetchToken, setCredentials })(Login)
+export default connect(null, { fetchToken })(Login)

@@ -1,21 +1,6 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, SET_CREDENTIALS } from './index';
-
-export const setCredentials = credentials => {
-    return ({type: SET_CREDENTIALS, payload: credentials});
-}
-
-const fetchUserInfo = username => dispatch => {
-    console.log('fetching user info');
-    axiosWithAuth()
-        .get(`/users/${username}`)
-        .then(res => {
-            console.log(res)
-            dispatch(setCredentials(res.data));
-        })
-        .catch(err => console.error(err));
-}
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL } from './index';
 
 export const fetchToken = credentials => dispatch => {
     let type = credentials.firstname ? 'register' : 'login';
@@ -26,7 +11,6 @@ export const fetchToken = credentials => dispatch => {
         .then(res => {
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('username', credentials.username);
-            fetchUserInfo(credentials.username)(dispatch);
             dispatch({type: LOGIN_SUCCESS, payload: res.data});
             window.location.href = '/';
         })
