@@ -8,7 +8,7 @@ class ProjectList extends React.Component {
     render() {
         return(
             <div>
-                {this.props.projectList.map(project => 
+                {localStorage.getItem('token') && this.props.projectList.map(project => 
                     <ProjectCard project={project} key={project.id} id={project.id}/>)}
             </div>
         )
