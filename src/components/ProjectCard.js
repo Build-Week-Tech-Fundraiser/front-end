@@ -10,7 +10,8 @@ class ProjectCard extends React.Component {
         return (
             <div onClick={this.handleClick}>
                 <h3>{this.props.project.title}</h3>
-
+                <p>{this.props.project.description}</p>
+                <br/>
             </div>
         )
     }
