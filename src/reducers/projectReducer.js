@@ -1,6 +1,12 @@
-import { PROJECT_FETCH_START, PROJECT_FETCH_SUCCESS, PROJECT_FETCH_FAIL, CHECK_FUNDERS } from '../actions/index';
+import { 
+    PROJECT_FETCH_START, 
+    PROJECT_FETCH_SUCCESS, 
+    PROJECT_FETCH_FAIL,
+    CHECK_FUNDERS,
+    SET_IS_HOST } from '../actions/index';
 
 const initialState = {
+    isHost: false,
     isFunder: false,
     isLoading: false,
     message: '',
@@ -38,6 +44,11 @@ export const projectReducer = (state = initialState, action) => {
                 ...state,
                 isFunder: action.payload.filter(funder => 
                     funder.username === localStorage.getItem('username')).length === 1 ? true : false
+            })
+        case (SET_IS_HOST):
+            return ({
+                ...state,
+                isHost: action.payload
             })
         default:
             return state
