@@ -47,3 +47,12 @@ export const defundProject = projectId => dispatch => {
         }
     })()
 }
+
+export const postNewProject = projectSubmition => dispatch => {
+    axiosWithAuth()
+        .post(`/projects/`, projectSubmition)
+        .then(res => {
+            window.location.href = `/project/${res.data.id}`
+        })
+        .catch(err => console.error(err.response))
+}
