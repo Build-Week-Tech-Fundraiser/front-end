@@ -54,7 +54,6 @@ class Project extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.project);
     return state.project;
 }
 
