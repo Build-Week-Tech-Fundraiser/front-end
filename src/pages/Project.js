@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
-import { fetchProject, fundProject } from '../actions/projectActions';
+import { fetchProject, fundProject, defundProject } from '../actions/projectActions';
 import { Button } from '../components/styles/ButtonStyles';
 
 class Project extends React.Component {
@@ -21,6 +21,10 @@ class Project extends React.Component {
         this.props.fundProject(this.id);
     }
 
+    handleDefund = e => {
+        this.props.defundProject(this.id)
+    }
+
     render() {
         return (
             <div>
@@ -37,7 +41,12 @@ class Project extends React.Component {
                             </li>
                         )}
                     </ul>
-                    <Button onClick={this.handleFund}>become a funder</Button>
+                    {!this.props.isFunder ? 
+                        (
+                            <Button onClick={this.handleFund}>become a funder</Button>
+                        ):(
+                            <Button onClick={this.handleDefund}>cancel funder status</Button>
+                        )}
                 </div>
             </div>
         )
@@ -49,4 +58,4 @@ const mapStateToProps = state => {
     return state.project;
 }
 
-export default connect(mapStateToProps, { fetchProject, fundProject })(withRouter(Project))
+export default connect(mapStateToProps, { fetchProject, fundProject, defundProject })(withRouter(Project))
