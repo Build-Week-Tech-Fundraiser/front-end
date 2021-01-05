@@ -30,14 +30,14 @@ class Project extends React.Component {
                 <div>
                     <ul>
                         {this.props.funders.map(funder => 
-                            <li>
+                            <li key={funder.id}>
                                 <br/>
                                 <p>{funder.firstname} {funder.lastname}</p>
                                 <p>{funder.username}</p>
                             </li>
                         )}
                     </ul>
-                    <Button onClick={this.handleFund}>Fund This Project</Button>
+                    <Button onClick={this.handleFund}>become a funder</Button>
                 </div>
             </div>
         )
