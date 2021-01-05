@@ -2,7 +2,11 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
-import { fetchProject, fundProject, defundProject } from '../actions/projectActions';
+import { 
+    fetchProject, 
+    fundProject, 
+    defundProject,
+    setIsHost } from '../actions/projectActions';
 import { Button } from '../components/styles/ButtonStyles';
 
 class Project extends React.Component {
@@ -14,6 +18,7 @@ class Project extends React.Component {
 
     componentDidMount() {
         this.props.fetchProject(this.id);
+        this.props.setIsHost(parseInt(this.id));
     }
 
     handleFund = e => {
@@ -29,6 +34,7 @@ class Project extends React.Component {
         return (
             <div>
                 {this.props.message && <p>{this.props.message}</p>}
+                {this.props.isHost && <p>You're the host of this project (delete and edit features pending)</p>}
                 <h2>{this.props.title}</h2>
                 <p>{this.props.description}</p>
                 <div>
@@ -57,4 +63,8 @@ const mapStateToProps = state => {
     return state.project;
 }
 
-export default connect(mapStateToProps, { fetchProject, fundProject, defundProject })(withRouter(Project))
+export default connect(mapStateToProps, { 
+    fetchProject, 
+    fundProject, 
+    defundProject,
+    setIsHost })(withRouter(Project))
