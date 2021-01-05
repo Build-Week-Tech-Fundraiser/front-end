@@ -10,9 +10,6 @@ import Authentication from './pages/Authentication';
 import Project from './pages/Project';
 import Home from './pages/Home';
 
-//temp 
-import ProjectForm from './components/ProjectForm';
-
 class App extends React.Component {
 
   render() {
@@ -20,7 +17,6 @@ class App extends React.Component {
       <Router>
         <div>
           <Navigation/>
-          <ProjectForm/>
           <Switch>
             <Route exact path='/' component={Browse}/>
             <Route path='/login' component={Authentication}/>
