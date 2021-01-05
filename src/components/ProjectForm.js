@@ -1,11 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { getUserId } from '../utils/getUserId';
+import { getUserProjects } from '../utils/getUserProjects'
+import { postNewProject } from '../actions/projectActions';
 import { Button } from './styles/ButtonStyles';
 
 class ProjectForm extends React.Component {
 
     state = {
+        message: '',
         inputText: {
             title: '',
             description: '',
@@ -15,6 +19,7 @@ class ProjectForm extends React.Component {
     handleChange = e => {
         this.setState({
             ...this.state,
+            message: '',
             inputText: {
                 ...this.state.inputText,
                 [e.target.name]: e.target.value
@@ -24,17 +29,23 @@ class ProjectForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        (async () => {
-            const username = localStorage.getItem('username')
-            const userId = await getUserId(username);
-            console.log({...this.state.inputText, host: userId})
-            // postNewProject({...this.state.inputText, host: userId})
-        })() 
+        if(this.state.inputText.title && this.state.inputText.title)
+            (async () => {
+                const username = localStorage.getItem('username')
+                const userId = await getUserId(username);
+                this.props.postNewProject({...this.state.inputText, host: userId})
+            })() 
+        else
+            this.setState({
+                ...this.state,
+                message: 'Title and description required'
+            })
     }
 
     render() {
         return (
             <div>
+                {this.state.message && <p>{this.state.message}</p>}
                 <form onSubmit={this.handleSubmit}>
                     <label>title: </label>
                     <input 
@@ -57,4 +68,4 @@ class ProjectForm extends React.Component {
     }
 }
 
-export default ProjectForm
+export default connect(null, { postNewProject })(ProjectForm)
