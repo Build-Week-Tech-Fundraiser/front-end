@@ -202,7 +202,7 @@ This data is broken down into three categories: `Project`, `Funder` and `User` d
 ---
 ## Funder data 
 
-**[PUT]** `/api/projects/:id/fund/:userid`
+**[POST]** `/api/projects/:id/fund/:userid`
 
 - **REQUIRES** Object: 
 

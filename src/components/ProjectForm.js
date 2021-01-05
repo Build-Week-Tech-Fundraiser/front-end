@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { getUserId } from '../utils/getUserId';
+import { postNewProject } from '../actions/projectActions';
 import { Button } from './styles/ButtonStyles';
 
 class ProjectForm extends React.Component {
@@ -28,7 +30,7 @@ class ProjectForm extends React.Component {
             const username = localStorage.getItem('username')
             const userId = await getUserId(username);
             console.log({...this.state.inputText, host: userId})
-            // postNewProject({...this.state.inputText, host: userId})
+            this.props.postNewProject({...this.state.inputText, host: userId})
         })() 
     }
 
@@ -57,4 +59,4 @@ class ProjectForm extends React.Component {
     }
 }
 
-export default ProjectForm
+export default connect(null, { postNewProject })(ProjectForm)
