@@ -6,6 +6,7 @@ import { Button } from './styles/ButtonStyles';
 class ProjectForm extends React.Component {
 
     state = {
+        message: '',
         inputText: {
             title: '',
             description: '',
@@ -15,6 +16,7 @@ class ProjectForm extends React.Component {
     handleChange = e => {
         this.setState({
             ...this.state,
+            message: '',
             inputText: {
                 ...this.state.inputText,
                 [e.target.name]: e.target.value
@@ -35,6 +37,7 @@ class ProjectForm extends React.Component {
     render() {
         return (
             <div>
+                {this.state.message && <p>{this.state.message}</p>}
                 <form onSubmit={this.handleSubmit}>
                     <label>title: </label>
                     <input 
