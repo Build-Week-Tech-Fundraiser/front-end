@@ -2,7 +2,11 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
-import { fetchProject, fundProject, defundProject } from '../actions/projectActions';
+import { 
+    fetchProject, 
+    fundProject, 
+    defundProject,
+    setIsHost } from '../actions/projectActions';
 import { Button } from '../components/styles/ButtonStyles';
 
 import styled from 'styled-components'
@@ -16,6 +20,7 @@ class Project extends React.Component {
 
     componentDidMount() {
         this.props.fetchProject(this.id);
+        this.props.setIsHost(parseInt(this.id));
     }
 
     handleFund = e => {

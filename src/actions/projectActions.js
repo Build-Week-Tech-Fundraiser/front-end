@@ -1,6 +1,12 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-import { PROJECT_FETCH_START, PROJECT_FETCH_SUCCESS, PROJECT_FETCH_FAIL, CHECK_FUNDERS } from '../actions/index';
+import { 
+    PROJECT_FETCH_START, 
+    PROJECT_FETCH_SUCCESS, 
+    PROJECT_FETCH_FAIL, 
+    CHECK_FUNDERS,
+    SET_IS_HOST } from '../actions/index';
+import { getUserProjects } from '../utils/getUserProjects';
 
 export const fetchProject = projectId => dispatch => {
     dispatch({type: PROJECT_FETCH_START});
