@@ -1,6 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { getUserId } from '../utils/getUserId';
+import { getUserProjects } from '../utils/getUserProjects'
+import { postNewProject } from '../actions/projectActions';
 import { Button } from './styles/ButtonStyles';
 
 class ProjectForm extends React.Component {
@@ -26,12 +29,17 @@ class ProjectForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        (async () => {
-            const username = localStorage.getItem('username')
-            const userId = await getUserId(username);
-            console.log({...this.state.inputText, host: userId})
-            // postNewProject({...this.state.inputText, host: userId})
-        })() 
+        if(this.state.inputText.title && this.state.inputText.title)
+            (async () => {
+                const username = localStorage.getItem('username')
+                const userId = await getUserId(username);
+                this.props.postNewProject({...this.state.inputText, host: userId})
+            })() 
+        else
+            this.setState({
+                ...this.state,
+                message: 'Title and description required'
+            })
     }
 
     render() {
@@ -60,4 +68,4 @@ class ProjectForm extends React.Component {
     }
 }
 
-export default ProjectForm
+export default connect(null, { postNewProject })(ProjectForm)
