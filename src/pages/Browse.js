@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { fetchAllProjects } from '../actions/browseActions';
 import ProjectList from '../components/ProjectList';
@@ -19,13 +20,17 @@ class Browse extends React.Component {
                     <h2>Recent Projects</h2>
                 </MiniHeader>
 
-                <ProjectList/>
+                <ProjectListContainer>
+                    <ProjectList/>
+                </ProjectListContainer>
             </div>
         )
     }
 }
 
 export default connect(null, { fetchAllProjects })(Browse)
+
+//styles
 
 const MiniHeader = styled.header`
     width: 100%;
@@ -35,3 +40,8 @@ const MiniHeader = styled.header`
     color: #fff;
     font-size: 1.2rem;
 ` 
+
+const ProjectListContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`;

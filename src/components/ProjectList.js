@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import ProjectCard from './ProjectCard';
 
@@ -23,6 +24,8 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps)(ProjectList)
 
+//styles
+
 const ProjectListContainer = styled.div`
     width: 100%;
     background-color: #444;
@@ -32,3 +35,16 @@ const ProjectListContainer = styled.div`
     align-items: center;
     flex-wrap: wrap;
 ` 
+
+const ProjectCardContainer = styled.div`
+    width: 80%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+
+
+
+
+    /* border: thin black solid; */
+`;
