@@ -25,6 +25,16 @@ export const browseReducer = (state = initialState, action) => {
                 isLoading: false,
                 message: action.payload
             })
+        case('UPDATE_PROJECT'):
+            return ({
+                ...state,
+                projectList: state.projectList.map(project => {
+                    if(project.id === action.payload.id) 
+                        return action.payload;
+                    else
+                        return project
+                })
+            })
         default:
             return state;
     }
