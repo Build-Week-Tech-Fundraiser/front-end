@@ -10,6 +10,6 @@ export const fetchAllProjects = () => dispatch => {
         .catch(err => dispatch({type: BROWSE_FETCH_FAIL, payload: err.response.data.message}));
 }
 
-export const updateProject = project => {
-    return {type: 'UPDATE_PROJECT', payload: project}
+export const updateProject = project => dispatch => {
+     dispatch({type: 'UPDATE_PROJECT', payload: project});
 }

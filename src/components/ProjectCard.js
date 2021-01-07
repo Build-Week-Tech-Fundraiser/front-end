@@ -7,9 +7,6 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { getUserId } from '../utils/getUserId';
 import FundButton from '../components/FundButton';
 
-
-import styled from 'styled-components'
-
 class ProjectCard extends React.Component {
     
     state = {
@@ -29,9 +26,6 @@ class ProjectCard extends React.Component {
         window.location.href = `/project/${this.props.id}`;
     }
 
-<<<<<<< HEAD
-    
-=======
     handleToggleFund = e => {
         // when FundButton is clicked, fund or defund respectively
 
@@ -57,7 +51,6 @@ class ProjectCard extends React.Component {
             }
         })()
     }
->>>>>>> ada4bfe... added fund button to project card
 
     render() {
         return (
