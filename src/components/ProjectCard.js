@@ -69,7 +69,7 @@ class ProjectCard extends React.Component {
                 </div>
                 <div className='card-body-container'>
                     <img onClick={this.handleClick} 
-                        src={`https://picsum.photos/id/${this.props.id}/400`} alt='random'/>
+                        src={`https://picsum.photos/400?random=${this.props.id}`} alt='random'/>
                     <div className='card-body'>
                         <p>
                             {this.props.project.funders.length} funders: 
