@@ -74,10 +74,10 @@ class ProjectCard extends React.Component {
                         <p>
                             {this.props.project.funders.length} funders: 
                             {this.props.project.funders.map(funder => 
-                                <span className='username'>@{funder.username} </span>
+                                <span className='username' key={funder.id}>@{funder.username} </span>
                             )}
                         </p>
-                        <p>{this.props.project.description}</p>
+                        <p className='description'>{this.props.project.description}</p>
                         <FundButton  
                             toggle={this.handleToggleFund}
                             size='35px' 
@@ -111,20 +111,21 @@ const SimpleCard = styled.div`
 
 const ProjectCardStyle = styled.div`
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 
     .card-header {
         display: flex;
         flex-direction: column;
         align-items: baseline;
         padding: 0 5px;
-        background: #ffffff;
         border-bottom: thin black solid;
+        background: #7a7a7a;
+        color: #ffffff;
         h3 {
             font-size: 1.4rem;
 
             &:hover {
-                color: lightblue;
+                color: burlywood;
             }
         }
     
@@ -134,7 +135,7 @@ const ProjectCardStyle = styled.div`
         width: auto;
         font-size: 1rem;
         font-style: italic;
-        color: gray;
+        color: #000000;
         padding-bottom: 5px;
 
         &:hover {
@@ -144,16 +145,23 @@ const ProjectCardStyle = styled.div`
 
     .card-body-container {
         display: flex;
-        background: #ffffff;
+        background: #dbdbdb;
 
         img {
             width: 50%;
         }
 
         .card-body {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between;
             margin: 5px;
+
+            .description {
+                height: 70%;
+                font-size: 1.1rem;
+            }
+
         }
     }
-
-    border: thin black solid;
 `;
