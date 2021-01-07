@@ -68,7 +68,7 @@ const mapStateToProps = state => {
     return state.project;
 }
 
-export default connect(mapStateToProps, { fetchProject, fundProject, defundProject })(withRouter(Project))
+export default connect(mapStateToProps, { fetchProject, fundProject, defundProject, setIsHost })(withRouter(Project))
 
 
 const MainCard = styled.div`
