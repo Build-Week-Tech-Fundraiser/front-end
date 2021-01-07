@@ -14,7 +14,6 @@ class Navigation extends React.Component {
     }
 
     redirect = path => {
-        
         window.location.href = path;
     }
 
