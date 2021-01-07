@@ -23,13 +23,13 @@ class ProjectCard extends React.Component {
             //         console.log(this.props.project)
             //     }
             // </SimpleCard>
-            <ProjectCardStyle onClick={this.handleClick}>
+            <ProjectCardStyle>
                 <div className='card-header'>
-                    <h3>{this.props.project.title}</h3>
+                    <h3 onClick={this.handleClick}>{this.props.project.title}</h3>
                     <span className='username'>@{this.props.project.host.username}</span>
                 </div>
                 <div className='card-body-container'>
-                    <img src={`https://picsum.photos/id/${this.props.id}/400`} alt='random'/>
+                    <img onClick={this.handleClick} src={`https://picsum.photos/id/${this.props.id}/400`} alt='random'/>
                     <p>{this.props.project.description}</p>
                 </div>
             </ProjectCardStyle>
@@ -65,8 +65,13 @@ const ProjectCardStyle = styled.div`
         flex-direction: column;
         align-items: baseline;
         padding: 0 5px;
+        border-bottom: thin black solid;
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+
+            &:hover {
+                color: lightblue;
+            }
         }
     
         .username {
@@ -81,9 +86,13 @@ const ProjectCardStyle = styled.div`
                 color: lightblue; 
             }
         }
+    }
 
-
-        border-bottom: thin black solid;
+    .card-body-container {
+        display: flex;
+        img {
+            width: 50%;
+        }
     }
 
     border: thin black solid;
