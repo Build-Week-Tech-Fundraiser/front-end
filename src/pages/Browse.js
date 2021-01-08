@@ -16,7 +16,11 @@ class Browse extends React.Component {
             <div>
                 <BrowseBody>
                     {localStorage.getItem('token') ? 
+<<<<<<< HEAD
                         <ProjectList projectList={this.props.projectList}/> 
+=======
+                        <ProjectList/> 
+>>>>>>> create-project-feature
                         :
                         <p>login to view projects</p>}
                 </BrowseBody>
@@ -32,6 +36,11 @@ export default connect(mapStateToProps, { fetchAllProjects })(Browse)
 
 //styles
 
+<<<<<<< HEAD
+=======
+//styles
+
+>>>>>>> create-project-feature
 const BrowseBody = styled.div`
     display: flex;
     justify-content: center;

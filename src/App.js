@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 
 import Navigation from './components/Navigation';
+import ProjectForm from './components/ProjectForm';
 import Browse from './pages/Browse';
 import Authentication from './pages/Authentication';
 import Project from './pages/Project';
@@ -21,6 +22,7 @@ class App extends React.Component {
       <Router>
         <div onClick={this.handleClick}>
           <Navigation/>
+          {this.props.creating && <ProjectForm/>}
           <Switch>
             <Route exact path='/' component={Browse}/>
             <Route path='/login' component={Authentication}/>
@@ -34,9 +36,10 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => { 
+  console.log(state.app);
   return {
     creating: state.app.creatingNewProject
   }
 }
 
-export default connect(mapStateToProps, { })(App);
+export default connect(mapStateToProps)(App);

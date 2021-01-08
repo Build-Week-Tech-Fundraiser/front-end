@@ -1,4 +1,4 @@
-import { BROWSE_FETCH_START, BROWSE_FETCH_SUCCESS, BROWSE_FETCH_FAIL, ADD_PROJECT, UPDATE_PROJECT } from '../actions/index';
+import { BROWSE_FETCH_START, BROWSE_FETCH_SUCCESS, BROWSE_FETCH_FAIL, UPDATE_PROJECT, ADD_PROJECT } from '../actions/index';
 
 const initialState = {
     isLoading: false,

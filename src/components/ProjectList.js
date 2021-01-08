@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import ProjectCard from './ProjectCard';
@@ -17,6 +18,8 @@ class ProjectList extends React.Component {
 
 
 export default ProjectList
+
+//styles
 
 //styles
 

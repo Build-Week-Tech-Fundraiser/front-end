@@ -14,8 +14,13 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const BROWSE_FETCH_START = "BROWSE_FETCH_START";
 export const BROWSE_FETCH_SUCCESS = "BROWSE_FETCH_SUCCESS";
 export const BROWSE_FETCH_FAIL = "BROWSE_FETCH_SUCCESS";
+<<<<<<< HEAD
 export const ADD_PROJECT = "ADD_PROJECT";
 export const UPDATE_PROJECT = "UPDATE_PROJECT";
+=======
+export const UPDATE_PROJECT = "UPDATE_PROJECT";
+export const ADD_PROJECT = "ADD_PROJECT";
+>>>>>>> create-project-feature
 
 export const PROJECT_FETCH_START = "PROJECT_FETCH_START";
 export const PROJECT_FETCH_SUCCESS = "PROJECT_FETCH_SUCCESS";
@@ -23,8 +28,12 @@ export const PROJECT_FETCH_FAIL = "PROJECT_FETCH_FAIL";
 export const SET_IS_HOST = "SET_IS_HOST";
 export const CHECK_FUNDERS = "CHECK_FUNDERS";
 
+<<<<<<< HEAD
 export const TOGGLE_NEW_PROJECT = "TOGGLE_NEW_PROJECT";
 
 export const PROFILE_FETCH_START = "PROFILE_FETCH_START";
 export const PROFILE_FETCH_SUCCESS = "PROFILE_FETCH_SUCCESS";
 export const PROFILE_FETCH_FAIL = "PROFILE_FETCH_FAIL";
+=======
+export const TOGGLE_NEW_PROJECT = "TOGGLE_NEW_PROJECT";
+>>>>>>> create-project-feature

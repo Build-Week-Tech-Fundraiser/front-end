@@ -5,7 +5,9 @@ import {
     PROJECT_FETCH_SUCCESS, 
     PROJECT_FETCH_FAIL, 
     CHECK_FUNDERS,
-    SET_IS_HOST } from '../actions/index';
+    SET_IS_HOST 
+} from '../actions/index';
+import { addProject } from './browseActions';
 import { getUserProjects } from '../utils/getUserProjects';
 
 export const fetchProject = projectId => dispatch => {
@@ -58,7 +60,8 @@ export const postNewProject = projectSubmition => dispatch => {
     axiosWithAuth()
         .post(`/projects/`, projectSubmition)
         .then(res => {
-            window.location.href = `/project/${res.data.id}`
+            dispatch(addProject(res.data));
+            // window.location.href = `/project/${res.data.id}`
         })
         .catch(err => console.error(err.response))
 }
