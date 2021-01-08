@@ -4,8 +4,6 @@ import styled from 'styled-components';
 
 import ProjectCard from './ProjectCard';
 
-import styled from 'styled-components'
-
 class ProjectList extends React.Component {
 
     render() {
