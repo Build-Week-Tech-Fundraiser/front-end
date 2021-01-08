@@ -27,8 +27,6 @@ class ProjectCard extends React.Component {
     }
 
     handleToggleFund = e => {
-        // when FundButton is clicked, fund or defund respectively
-
         (async () => {
             try {
                 const userId = await getUserId(localStorage.getItem('username'));
@@ -54,14 +52,6 @@ class ProjectCard extends React.Component {
 
     render() {
         return (
-            // <SimpleCard onClick={this.handleClick}>
-            //     <h3>{this.props.project.title}</h3>
-            //     <p>{this.props.project.description}</p>
-            //     <br/>
-            //     {
-            //         console.log(this.props.project)
-            //     }
-            // </SimpleCard>
             <ProjectCardStyle>
                 <div className='card-header'>
                     <h3 onClick={this.handleClick}>{this.props.project.title}</h3>
