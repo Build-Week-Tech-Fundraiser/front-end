@@ -1,4 +1,4 @@
-import { BROWSE_FETCH_START, BROWSE_FETCH_SUCCESS, BROWSE_FETCH_FAIL } from '../actions/index';
+import { BROWSE_FETCH_START, BROWSE_FETCH_SUCCESS, BROWSE_FETCH_FAIL, ADD_PROJECT, UPDATE_PROJECT } from '../actions/index';
 
 const initialState = {
     isLoading: false,
@@ -25,7 +25,7 @@ export const browseReducer = (state = initialState, action) => {
                 isLoading: false,
                 message: action.payload
             })
-        case('UPDATE_PROJECT'):
+        case(UPDATE_PROJECT):
             return ({
                 ...state,
                 projectList: state.projectList.map(project => {
