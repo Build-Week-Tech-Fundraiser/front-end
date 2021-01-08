@@ -30,9 +30,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => { 
-  return {
-    userCredentials: state.user.credentials
-  };
+  return {};
 }
 
 export default connect(mapStateToProps, { })(App);
