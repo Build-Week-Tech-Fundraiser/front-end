@@ -17,7 +17,7 @@ export const browseReducer = (state = initialState, action) => {
             return ({
                 ...state,
                 isLoading: false,
-                projectList: action.payload
+                projectList: action.payload.reverse()
             })
         case(BROWSE_FETCH_FAIL):
             return ({
@@ -39,8 +39,8 @@ export const browseReducer = (state = initialState, action) => {
             return ({
                 ...state,
                 projectList: [
-                    ...state.projectList,
-                    action.payload
+                    action.payload,
+                    ...state.projectList
                 ]
             })
         default:
