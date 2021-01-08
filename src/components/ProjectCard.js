@@ -1,16 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
 import { updateProject } from '../actions/browseActions';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { getUserId } from '../utils/getUserId';
+import { deleteProject } from '../utils/deleteProject';
 import FundButton from '../components/FundButton';
+import DeleteProjectButton from '../components/DeleteProjectButton';
 
 class ProjectCard extends React.Component {
     
     state = {
-        isFunding: false
+        isFunding: false,
+        isHost: false
     }
 
     componentDidMount() {
@@ -20,6 +24,11 @@ class ProjectCard extends React.Component {
                 ...this.state,
                 isFunding: true
             }) : null)
+        if(this.props.project.host.username === localStorage.getItem('username')) 
+            this.setState({
+                ...this.state,
+                isHost: true
+            });
     }
 
     handleClick = e => {
@@ -50,7 +59,15 @@ class ProjectCard extends React.Component {
         })()
     }
 
+    handleDeleteProject = e => {
+        (async () => {
+            await deleteProject(this.props.project.id);
+            window.location.href = this.props.match.url;
+        })()
+    }
+
     render() {
+        console.log(this.state);
         return (
             <ProjectCardStyle>
                 <div className='card-header'>
@@ -68,11 +85,14 @@ class ProjectCard extends React.Component {
                             )}
                         </p>
                         <p className='description'>{this.props.project.description}</p>
-                        <FundButton  
-                            toggle={this.handleToggleFund}
-                            size='35px' 
-                            checked={this.state.isFunding}
-                        />
+                        <span className='action-buttons'>
+                            {this.state.isHost && <DeleteProjectButton delete={this.handleDeleteProject} size='35px'/>}
+                            <FundButton  
+                                toggle={this.handleToggleFund}
+                                size='35px' 
+                                checked={this.state.isFunding}
+                            />
+                        </span>
                     </div>
                 </div>
             </ProjectCardStyle>
@@ -80,7 +100,7 @@ class ProjectCard extends React.Component {
     }
 }
 
-export default connect(null, { updateProject })(ProjectCard)
+export default connect(null, { updateProject })(withRouter(ProjectCard))
 
 //styles
 
@@ -142,16 +162,20 @@ const ProjectCardStyle = styled.div`
         }
 
         .card-body {
+            width: 100%;
             display: flex;
             flex-flow: column nowrap;
             justify-content: space-between;
             margin: 5px;
-
             .description {
                 height: 70%;
                 font-size: 1.1rem;
             }
 
+            .action-buttons {
+                display: flex;
+                justify-content: space-between;
+            }
         }
     }
 `;

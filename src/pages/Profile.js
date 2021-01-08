@@ -33,7 +33,7 @@ class Profile extends React.Component {
             <div>
                 <h2 className='fullname'>{this.props.credentials.firstname} {this.props.credentials.lastname}</h2>
                 <p className='username'>@{this.props.credentials.username}</p>
-                <ProjectList projectList={this.props.userProjects}/>
+                {this.props.userProjects.length >= 1 && <ProjectList projectList={this.props.userProjects}/>}
                 {this.props.message && <p>{this.props.message}</p>}
                 <Button onClick={this.handleLogin} name='/login' className='login'>{localStorage.getItem('token') ? 'logout' : 'login'}</Button>
             </div>
