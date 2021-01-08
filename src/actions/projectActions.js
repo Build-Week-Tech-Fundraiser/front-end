@@ -1,6 +1,14 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-import { PROJECT_FETCH_START, PROJECT_FETCH_SUCCESS, PROJECT_FETCH_FAIL, CHECK_FUNDERS } from '../actions/index';
+import { 
+    PROJECT_FETCH_START, 
+    PROJECT_FETCH_SUCCESS, 
+    PROJECT_FETCH_FAIL, 
+    CHECK_FUNDERS,
+    SET_IS_HOST 
+} from '../actions/index';
+import { addProject } from './browseActions';
+import { getUserProjects } from '../utils/getUserProjects';
 
 export const fetchProject = projectId => dispatch => {
     dispatch({type: PROJECT_FETCH_START});
@@ -52,7 +60,23 @@ export const postNewProject = projectSubmition => dispatch => {
     axiosWithAuth()
         .post(`/projects/`, projectSubmition)
         .then(res => {
-            window.location.href = `/project/${res.data.id}`
+            dispatch(addProject(res.data));
+            // window.location.href = `/project/${res.data.id}`
         })
         .catch(err => console.error(err.response))
+}
+
+export const setIsHost = projectId => dispatch => {
+    (async () => {
+        try {
+            const userProjects = await getUserProjects(localStorage.getItem('username'));
+            const isHostArr = userProjects.filter(project => project.id === projectId)
+            if (isHostArr.length === 1) 
+                dispatch({type: SET_IS_HOST, payload: true})
+            else 
+                dispatch({type: SET_IS_HOST, payload: false})
+        } catch (err) {
+            console.log(err)
+        }
+    })()
 }
