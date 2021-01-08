@@ -25,8 +25,7 @@ export default connect(mapStateToProps)(ProjectList)
 //styles
 
 const ProjectListContainer = styled.div`
-    width: 100%;
-    background-color: #444;
+    width: 80%;
     min-height: 100vh;
     display: flex;
     justify-content: center;
