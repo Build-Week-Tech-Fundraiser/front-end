@@ -1,6 +1,6 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-import { BROWSE_FETCH_START, BROWSE_FETCH_SUCCESS, BROWSE_FETCH_FAIL } from './index'
+import { BROWSE_FETCH_START, BROWSE_FETCH_SUCCESS, BROWSE_FETCH_FAIL, ADD_PROJECT } from './index'
 export const fetchAllProjects = () => dispatch => {
     dispatch({type: BROWSE_FETCH_START})
 
@@ -12,4 +12,8 @@ export const fetchAllProjects = () => dispatch => {
 
 export const updateProject = project => dispatch => {
      dispatch({type: 'UPDATE_PROJECT', payload: project});
+}
+
+export const addProject = project => {
+    return {type: ADD_PROJECT, payload: project};
 }

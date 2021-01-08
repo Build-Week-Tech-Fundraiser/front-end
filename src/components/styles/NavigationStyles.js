@@ -4,6 +4,8 @@ export const NavContainer = styled.div`
     background: #2e2e2e;
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: 0;
     nav {
         width: 75%;
         padding: 1rem;

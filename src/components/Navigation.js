@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+
+import { toggleCreatingNewProject } from '../actions/appActions'; 
 
 import { NavContainer } from './styles/NavigationStyles';
-
 import NewProjectButton from './NewProjectButton';
 import HomeButton from './HomeButton';
 import UserButton from './UserButton';
@@ -17,6 +20,10 @@ class Navigation extends React.Component {
         window.location.href = path;
     }
 
+    handleNewProject = e => {
+        this.props.toggleCreatingNewProject();
+    }
+
     render() {
         return (
             <NavContainer>
@@ -26,7 +33,7 @@ class Navigation extends React.Component {
                             <HomeButton onClick={() => this.redirect('/')} stroke='#ffffff' size={this.iconSize}/>
                         </li>
                         <li>
-                            <NewProjectButton size={this.iconSize} stroke='#ffffff'/>
+                            <NewProjectButton onClick={this.handleNewProject} size={this.iconSize} stroke='#ffffff'/>
                         </li>
                         <li>
                             <UserButton onClick={() => this.redirect('/home')} stroke='#ffffff' size={this.iconSize}/>
@@ -38,4 +45,4 @@ class Navigation extends React.Component {
     }
 }
 
-export default Navigation
+export default connect(null, { toggleCreatingNewProject })(Navigation)
