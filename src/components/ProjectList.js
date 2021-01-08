@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import ProjectCard from './ProjectCard';
@@ -16,11 +15,8 @@ class ProjectList extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return state.browse
-}
 
-export default connect(mapStateToProps)(ProjectList)
+export default ProjectList
 
 //styles
 

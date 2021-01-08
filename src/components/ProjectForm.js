@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { getUserId } from '../utils/getUserId';
-import { getUserProjects } from '../utils/getUserProjects'
 import { postNewProject } from '../actions/projectActions';
 import { toggleCreatingNewProject } from '../actions/appActions';
 import { Button } from './styles/ButtonStyles';

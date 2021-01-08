@@ -8,7 +8,7 @@ import Navigation from './components/Navigation';
 import Browse from './pages/Browse';
 import Authentication from './pages/Authentication';
 import Project from './pages/Project';
-import Home from './pages/Home';
+import Profile from './pages/Profile';
 
 class App extends React.Component {
 
@@ -25,7 +25,7 @@ class App extends React.Component {
             <Route exact path='/' component={Browse}/>
             <Route path='/login' component={Authentication}/>
             <Route path='/project/:id' component={Project}/>
-            <PrivateRoute path='/home' component={Home} />
+            <PrivateRoute path='/profile/:username' component={Profile} />
           </Switch>
         </div>
       </Router>
@@ -34,7 +34,13 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => { 
+<<<<<<< HEAD
   return {};
+=======
+  return {
+    creating: state.app.creatingNewProject
+  }
+>>>>>>> c932e82... started adding functionality to home page
 }
 
 export default connect(mapStateToProps, { })(App);
