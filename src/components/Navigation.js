@@ -1,17 +1,27 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+
+import { toggleCreatingNewProject } from '../actions/appActions'; 
 
 import { NavContainer } from './styles/NavigationStyles';
-import { Button } from './styles/ButtonStyles';
+import NewProjectButton from './NewProjectButton';
+import HomeButton from './HomeButton';
+import UserButton from './UserButton';
 
 class Navigation extends React.Component {
 
-    handleClick = e => {
-        e.preventDefault();
-        if (e.target.textContent === 'logout') {
-            localStorage.removeItem('token');
-            localStorage.removeItem('username');
-        }
-        window.location.href = e.target.name;
+    constructor(props) {
+        super();
+        this.iconSize = '35px';
+    }
+
+    redirect = path => {
+        window.location.href = path;
+    }
+
+    handleNewProject = e => {
+        this.props.toggleCreatingNewProject();
     }
 
     render() {
@@ -20,13 +30,13 @@ class Navigation extends React.Component {
                 <nav>
                     <ul>
                         <li>
-                            <Button onClick={this.handleClick} name='/'>browse</Button>
+                            <HomeButton onClick={() => this.redirect('/')} stroke='#ffffff' size={this.iconSize}/>
                         </li>
                         <li>
-                            <Button onClick={this.handleClick} name='/home'>home</Button>
+                            <NewProjectButton onClick={this.handleNewProject} size={this.iconSize} stroke='#ffffff'/>
                         </li>
                         <li>
-                            <Button onClick={this.handleClick} name='/login'>{localStorage.getItem('token') ? 'logout' : 'login'}</Button>
+                            <UserButton onClick={() => this.redirect(`/profile/${localStorage.getItem('username')}`)} stroke='#ffffff' size={this.iconSize}/>
                         </li>
                     </ul>
                 </nav>
@@ -35,4 +45,4 @@ class Navigation extends React.Component {
     }
 }
 
-export default Navigation
+export default connect(null, { toggleCreatingNewProject })(Navigation)
