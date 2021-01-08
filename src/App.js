@@ -13,10 +13,14 @@ import Home from './pages/Home';
 
 class App extends React.Component {
 
+  handleClick = e => {
+    console.log(e)
+  }
+
   render() {
     return (
       <Router>
-        <div>
+        <div onClick={this.handleClick}>
           <Navigation/>
           {this.props.creating && <ProjectForm/>}
           <Switch>
