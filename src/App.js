@@ -12,10 +12,14 @@ import Home from './pages/Home';
 
 class App extends React.Component {
 
+  handleClick = e => {
+    console.log(e)
+  }
+
   render() {
     return (
       <Router>
-        <div>
+        <div onClick={this.handleClick}>
           <Navigation/>
           <Switch>
             <Route exact path='/' component={Browse}/>
