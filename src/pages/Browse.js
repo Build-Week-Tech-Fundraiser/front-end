@@ -8,7 +8,10 @@ import ProjectList from '../components/ProjectList';
 class Browse extends React.Component {
 
     componentDidMount() {
-        this.props.fetchAllProjects()
+        if(!localStorage.getItem('token'))
+            window.location.href = '/login';
+        else
+            this.props.fetchAllProjects()
     }
 
     render() {
