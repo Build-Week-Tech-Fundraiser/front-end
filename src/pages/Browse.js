@@ -29,15 +29,6 @@ export default connect(null, { fetchAllProjects })(Browse)
 
 //styles
 
-const MiniHeader = styled.header`
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background-color: black;
-    color: #fff;
-    font-size: 1.2rem;
-` 
-
 const BrowseBody = styled.div`
     display: flex;
     justify-content: center;

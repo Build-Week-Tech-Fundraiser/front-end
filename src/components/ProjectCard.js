@@ -94,20 +94,20 @@ export default connect(null, { updateProject })(ProjectCard)
 
 //styles
 
-const SimpleCard = styled.div`
-    width: 200px;
-    height: 150px;
-    background-color: black;
-    border: 1px solid white;
-    color: #fff;
-    padding: 10px;
-    margin: 10px;
-    transition: all 500ms ease-out;
+// const SimpleCard = styled.div`
+//     width: 200px;
+//     height: 150px;
+//     background-color: black;
+//     border: 1px solid white;
+//     color: #fff;
+//     padding: 10px;
+//     margin: 10px;
+//     transition: all 500ms ease-out;
 
-    &:hover{
-        box-shadow: 5px 10px 30px rgba(255,215,0,1);
-    }
-` 
+//     &:hover{
+//         box-shadow: 5px 10px 30px rgba(255,215,0,1);
+//     }
+// ` 
 
 const ProjectCardStyle = styled.div`
     width: 100%;

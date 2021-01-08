@@ -33,15 +33,9 @@ const ProjectListContainer = styled.div`
     flex-wrap: wrap;
 ` 
 
-const ProjectCardContainer = styled.div`
-    width: 80%;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-
-
-
-
-
-    /* border: thin black solid; */
-`;
+// const ProjectCardContainer = styled.div`
+//     width: 80%;
+//     display: flex;
+//     flex-flow: column nowrap;
+//     align-items: center;
+// `;
