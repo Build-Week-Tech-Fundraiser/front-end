@@ -9,14 +9,9 @@ import ProjectForm from './components/ProjectForm';
 import Browse from './pages/Browse';
 import Authentication from './pages/Authentication';
 import Project from './pages/Project';
-import Home from './pages/Home';
+import Profile from './pages/Profile';
 
 class App extends React.Component {
-
-  handleClick = e => {
-    console.log(e)
-  }
-
   render() {
     return (
       <Router>
@@ -27,7 +22,7 @@ class App extends React.Component {
             <Route exact path='/' component={Browse}/>
             <Route path='/login' component={Authentication}/>
             <Route path='/project/:id' component={Project}/>
-            <PrivateRoute path='/home' component={Home} />
+            <PrivateRoute path='/profile/:username' component={Profile} />
           </Switch>
         </div>
       </Router>
@@ -36,7 +31,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => { 
-  console.log(state.app);
   return {
     creating: state.app.creatingNewProject
   }

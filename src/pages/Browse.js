@@ -19,7 +19,7 @@ class Browse extends React.Component {
             <div>
                 <BrowseBody>
                     {localStorage.getItem('token') ? 
-                        <ProjectList/> 
+                        <ProjectList projectList={this.props.projectList}/> 
                         :
                         <p>login to view projects</p>}
                 </BrowseBody>
@@ -28,7 +28,12 @@ class Browse extends React.Component {
     }
 }
 
-export default connect(null, { fetchAllProjects })(Browse)
+const mapStateToProps = state => {
+    return state.browse
+}
+export default connect(mapStateToProps, { fetchAllProjects })(Browse)
+
+//styles
 
 //styles
 

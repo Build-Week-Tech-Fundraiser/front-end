@@ -36,7 +36,7 @@ class Navigation extends React.Component {
                             <NewProjectButton onClick={this.handleNewProject} size={this.iconSize} stroke='#ffffff'/>
                         </li>
                         <li>
-                            <UserButton onClick={() => this.redirect('/home')} stroke='#ffffff' size={this.iconSize}/>
+                            <UserButton onClick={() => this.redirect(`/profile/${localStorage.getItem('username')}`)} stroke='#ffffff' size={this.iconSize}/>
                         </li>
                     </ul>
                 </nav>
