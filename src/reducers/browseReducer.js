@@ -35,8 +35,6 @@ export const browseReducer = (state = initialState, action) => {
                         return project
                 })
             })
-<<<<<<< HEAD
-=======
         case(ADD_PROJECT):
             return ({
                 ...state,
@@ -45,7 +43,6 @@ export const browseReducer = (state = initialState, action) => {
                     ...state.projectList
                 ]
             })
->>>>>>> 04bb44c... added project form functionality. also reversed order of projectList to show most recent at the top
         default:
             return state;
     }

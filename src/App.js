@@ -34,13 +34,9 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => { 
-<<<<<<< HEAD
-  return {};
-=======
   return {
     creating: state.app.creatingNewProject
   }
->>>>>>> c932e82... started adding functionality to home page
 }
 
 export default connect(mapStateToProps, { })(App);
