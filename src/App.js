@@ -12,11 +12,6 @@ import Project from './pages/Project';
 import Profile from './pages/Profile';
 
 class App extends React.Component {
-
-  handleClick = e => {
-    console.log(e)
-  }
-
   render() {
     return (
       <Router>
@@ -36,7 +31,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => { 
-  console.log(state.app);
   return {
     creating: state.app.creatingNewProject
   }
